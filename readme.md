@@ -99,12 +99,43 @@ To find the hash password let's execute the command:
 ----
 <a name="john"></a>
 # John the Ripper
-## [Sources](https://terokarvinen.com/2023/crack-file-password-with-john/)
+## [Install and Compile - Sources](https://terokarvinen.com/2023/crack-file-password-with-john/)
+Firstly, we have to install all the requirements for John the Ripper. However, I did not use the command to update my components because I already did it a few minutes ago in the [ hashcat exersise ](#hashcat). So, I directly installed the dependencies by using the command:
 
+    $ sudo apt-get -y install micro bash-completion git build-essential libssl-dev zlib1g zlib1g-dev zlib-gst libbz2-1.0 libbz2-dev atool zip wget
+
+Then, I downloaded the **latest** version of John the Ripper using this [GiHub repository](https://github.com/openwall/john).
+
+    $ git clone --depth=1 https://github.com/openwall/john.git
+
+The previous command created a new directory named *john*. So, I moved into the *src* directory that is inside the *john* directory to compile the code.
+
+    $ cd john/src
+    $ ./configure 
+    $ make -s clean && make -sj4
+
+When the compilation is done, I had the message "Make process completed." The compilation created the *run* directory directly in the *john* directory. So, to run John the Ripper, I have to use the command:
+
+    $ /home/matt/john/run/john
 
 ----
 <a name="crackjohn"></a>
 # Zip file
 ## [Crack a zip file password](https://terokarvinen.com/2023/crack-file-password-with-john/)
+To crack a zip file, I firstly created my work environment in a directory named *zipCrack* in my personal home directory.
+In this directory, I downloaded [a protected zip](https://terokarvinen.com/2023/crack-file-password-with-john/tero.zip).
 
+    $ wget https://terokarvinen.com/2023/crack-file-password-with-john/tero.zip
 
+At this point, if I tried to use the *unzip* command on the downloaded file, it asked me a password that I did not have.
+To crack the password, we first have to extract the hash of the zip, so I used the command:
+
+    $ /home/matt/john/run/zip2john tero.zip > tero.zip.hash
+
+It created me a file that contains the hash value of the zip file. Now, I can do a dictionary attack on the hash file.
+
+    $ /home/matt/john/run/john tero.zip.hash
+
+The password has been cracked instantly. So, I can now unzip the tero.zip by using the founded password.
+
+<p align="center"> <img alt="John result" src="https://github.com/MatthieuBruh/h4_Hash/blob/main/screenshots/john.PNG"> </p>
