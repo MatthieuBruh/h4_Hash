@@ -80,21 +80,21 @@ Let's find the hash type by using the command:
     
 Let's now see the result:
 
-HASHID IMAGE
+<p align="center"> <img alt="Hashid result" src="https://github.com/MatthieuBruh/h4_Hash/blob/main/screenshots/hashid.PNG"> </p>
 
 As we can see, we have the kind of hash that is possible for our hash. Generally, one of the three first should be the right one. Let's try with MD5, because it is the most popular. So, I entered the following command:
 
     $ hashcat -m 0 hash.txt rockyou.txt -o solved
 
-Annnd, the hash is cracked:
+And, the hash is cracked:
 
-HASHCAT IMAGE
+<p align="center"> <img alt="Hashcat result" src="https://github.com/MatthieuBruh/h4_Hash/blob/main/screenshots/hascat.PNG"> </p>
 
 To find the hash password let's execute the command:
 
     $ cat solved
 
-CATSOLVED IMAGE
+<p align="center"> <img alt="Cat solved result" src="https://github.com/MatthieuBruh/h4_Hash/blob/main/screenshots/catSolved.PNG"> </p>
 
 ----
 <a name="john"></a>
