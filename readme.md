@@ -43,13 +43,40 @@
 ----
 <a name="hashcat"></a>
 # Hashcat
-## [Installation](https://terokarvinen.com/2022/cracking-passwords-with-hashcat/)
+## [Installation source](https://terokarvinen.com/2022/cracking-passwords-with-hashcat/)
+As long as you are working on a Linux distro (or others operating systems), it is important to regularly update your components. In my case, I try to do at least one time every two weeks and also before I install a new component. To update my components, I wrote the following commands:
 
+    $ sudo apt-get update
+    $ sudo apt-get upgrade
+
+After that, I am now ready to install a new component. In the case of the installation of Hashcat, I wrote the following command:
+
+    $ sudo apt-get -y install hashid hashcat wget
+
+Magic, the installation is now done!! :clap:
 
 ----
 <a name="crackhash"></a>
 # Crack this hash
 ## [Sources](https://terokarvinen.com/2022/cracking-passwords-with-hashcat/)
+So, to work correctly, I think it is important to create a dedicated work environment. I created it directly in my personal home directory.
+
+    $ mkdir crack
+    $ cd crack
+
+We can now create a new file and write in it the hash that we have to crack: *8eb8e307a6d649bc7fb51443a06a216f*.
+
+    $ nano hash.txt
+    # Using the nano editor, I copy-pasted the hash in the file and I saved the modification.
+
+We are now ready to work! <br />
+Let's find the hash type by using the command:
+
+    $ hashid -m hash.txt
+    
+Let's now see the result:
+
+!()[]
 
 
 ----
