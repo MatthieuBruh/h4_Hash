@@ -64,6 +64,10 @@ So, to work correctly, I think it is important to create a dedicated work enviro
     $ mkdir crack
     $ cd crack
 
+We can already install the rockyou file in this directory: 
+
+    $ wget https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt
+
 We can now create a new file and write in it the hash that we have to crack: *8eb8e307a6d649bc7fb51443a06a216f*.
 
     $ nano hash.txt
@@ -76,8 +80,21 @@ Let's find the hash type by using the command:
     
 Let's now see the result:
 
-!()[]
+HASHID IMAGE
 
+As we can see, we have the kind of hash that is possible for our hash. Generally, one of the three first should be the right one. Let's try with MD5, because it is the most popular. So, I entered the following command:
+
+    $ hashcat -m 0 hash.txt rockyou.txt -o solved
+
+Annnd, the hash is cracked:
+
+HASHCAT IMAGE
+
+To find the hash password let's execute the command:
+
+    $ cat solved
+
+CATSOLVED IMAGE
 
 ----
 <a name="john"></a>
