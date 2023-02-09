@@ -14,10 +14,31 @@
 <a name="one-way-functions"></a>
 # Schneier 2015: Applied Cryptography
 ## [2.3 ONE-WAY FUNCTIONS](https://learning.oreilly.com/library/view/applied-cryptography-protocols/9781119096726/10_chap02.html#chap02-sec003)
-
+* Public-key cryptography is based on the notion of one-way function.
+* A one-way function is easy to compute, but hard to reverse.
+  * Hard means that a very long time is needed to reverse the function, but it is not impossible.
+* Mathematically speaking, we can't prove the existence of a one-way function.
+* A one-way function could be used to encrypt a message. However, if you can't decrypt the message it is useless.
+* A **trapdoor one-way function** is a kind of one-way function that has a secret trapdoor.
+  * It is hard to reverse the function without the trapdoor.
+  * On the other hand, if you know the trapdoor, you can easily reverse the function.
 
 ## [2.4 ONE-WAY HASH FUNCTIONS](https://learning.oreilly.com/library/view/applied-cryptography-protocols/9781119096726/10_chap02.html#chap02-sec004)
-
+* A **one-way hash function** (has several names, such as message digest) is central to modern cryptography.
+* Is a function that converts a variable (*pre-image*) to a fixed-length output string (*hash value*).
+* Is used to compare a real pre-image with one or multiple candidate.
+  * So, you can know if it is the same pre-image or not.
+* With one-way hash function, you can easily calculate the hash value of a pre-image. However, it is hard to generate the pre-image from a specific hash value.
+  * A real one-way hash function makes it difficult that two pre-image has the same hash value.
+* A hash function is public, you can easily know the process.
+  * The security of a one-way hash function is on its one way.
+  * A single bit of the pre-image changes, and the hash value is different.
+  * It is impossible to find the pre-image with only having the hash value.
+* One-way hash function is used to help us to ensure that a file has not been modified (so, it is the same version).
+  * Usually, you can find hash value, when you download an application from a website. So, you can ensure you that the application has not been altered by someone.
+* A **message authentication code** (MAC) is a one-way hash function with a secret key.
+  * The hash value is based on the pre-image and the key.
+  * You can't verify the hash value without the pre-image and the key.
 
 ----
 <a name="hashcat"></a>
